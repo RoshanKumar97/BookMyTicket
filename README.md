@@ -33,28 +33,6 @@ For the simplicity of system, I have made following assumptions while implementi
 Execute the API `http://localhost:8080/bms/initialize/generate` from swagger inside the heading `data-populator`. This will create a sample user, movie, theater, theater seats, shows, shows seats that will be used in booking ticket.
 
 
-## Booking a ticket
-
-1. Use the `show-controller` heading in swagger and call the `search` API inside it using `pageNo=1` and `limit=10` to see the available list of shows.
-
-2. Select any show from the above search result and copy its id.
-
-3. Now go to `ticket-controller` in the swagger and  execute the book ticket API using the following request body -
-
-{"seatType":"CLASSIC","seatsNumbers":["1A"],"showId":1,"userId":1}
-
-`{`
-`"seatType": "CLASSIC",`
-`"seatsNumbers": [`
-`"1A"`
-`],`
-`"showId": 1,`
-`"userId": 1`
-`}`
-
-This will book a ticket for you and you will get ticket id along with show details in response.
-
-
 ## Verifying the results from DB
 
 1. Login to your MySQL and go to `bookmyticket` DB
