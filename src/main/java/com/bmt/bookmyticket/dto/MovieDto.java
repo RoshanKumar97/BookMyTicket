@@ -18,4 +18,6 @@ public class MovieDto {
 
 	private LocalDate releaseDate;
 
+	private String imageUrl;
+
 }

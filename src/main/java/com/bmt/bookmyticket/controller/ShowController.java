@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 @RestController
 @RequestMapping("show")
@@ -29,6 +30,12 @@ public class ShowController {
 			@RequestParam(name = "showTime", required = false) @DateTimeFormat(pattern = "HH:mm:ss") LocalTime showTime) {
 
 		return ResponseEntity.ok(showService.searchShows(movieName, city, showDate, showTime, pageNo, limit));
+	}
+
+	@GetMapping("details/{id}")
+	public ResponseEntity<List<ShowDto>> showDetails(
+			@PathVariable(name = "id") long movieId){
+		return ResponseEntity.ok(showService.showDetailsById(movieId));
 	}
 
 	@PostMapping("add")
