@@ -31,12 +31,6 @@ public class MovieEntity {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name ="release_date")
-    private LocalDate releaseDate;
-
-    @Column(name ="image_url")
-    private String imageUrl;
-
     @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
     @JsonIgnore
     @Builder.Default

@@ -78,10 +78,4 @@ public class TheaterServiceImpl implements TheaterService {
 		return TheaterAdapter.toDto(theaterEntity.get());
 	}
 
-	@Override
-	public List<TheaterDto> getAllTheater() {
-		List<TheaterEntity> theaterEntities = theaterRepository.findAll();
-		return TheaterAdapter.toDto(theaterEntities);
-	}
-
 }

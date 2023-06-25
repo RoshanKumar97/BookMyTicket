@@ -5,7 +5,6 @@ import com.bmt.bookmyticket.dto.ShowDto;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.List;
 
 public interface ShowService {
 
@@ -13,5 +12,4 @@ public interface ShowService {
 
 	PageResponse<ShowDto> searchShows(String movieName, String city, LocalDate showDate, LocalTime showTime, int pageNo, int limit);
 
-	List<ShowDto> showDetailsById(long movieId);
 }

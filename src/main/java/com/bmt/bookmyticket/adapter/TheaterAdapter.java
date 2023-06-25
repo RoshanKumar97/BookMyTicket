@@ -4,9 +4,6 @@ import com.bmt.bookmyticket.dto.TheaterDto;
 import com.bmt.bookmyticket.model.TheaterEntity;
 import lombok.experimental.UtilityClass;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @UtilityClass
 public class TheaterAdapter {
 
@@ -27,20 +24,6 @@ public class TheaterAdapter {
 				.city(theaterEntity.getCity())
 				.address(theaterEntity.getAddress())
 				.build();
-	}
-
-	public static List<TheaterDto> toDto(List<TheaterEntity> theaterEntities){
-		List<TheaterDto> theaterDtos = new ArrayList<>();
-		for (TheaterEntity theaterEntity: theaterEntities){
-			TheaterDto theaterDto = TheaterDto.builder()
-					.id(theaterEntity.getId())
-					.name(theaterEntity.getName())
-					.city(theaterEntity.getCity())
-					.address(theaterEntity.getAddress())
-					.build();
-			theaterDtos.add(theaterDto);
-		}
-		return theaterDtos;
 	}
 
 }
