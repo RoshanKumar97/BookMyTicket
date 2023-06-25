@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("theater")
+@RequestMapping("cinema")
 public class TheaterController {
 
 	@Autowired
@@ -24,5 +26,10 @@ public class TheaterController {
 	public ResponseEntity<TheaterDto> getUser(@PathVariable(name = "id") @Min(value = 1, message = "Theater Id Cannot be -ve") long id) {
 
 		return ResponseEntity.ok(theaterService.getTheater(id));
+	}
+
+	@GetMapping("all")
+	public ResponseEntity<List<TheaterDto>> getAllCinemas(){
+		return ResponseEntity.ok(theaterService.getAllTheater());
 	}
 }

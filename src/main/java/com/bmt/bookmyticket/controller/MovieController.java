@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("movie")
 public class MovieController {
@@ -24,5 +26,12 @@ public class MovieController {
 	public ResponseEntity<MovieDto> getUser(@PathVariable(name = "id") @Min(value = 1, message = "Movie Id Cannot be -ve") long id) {
 
 		return ResponseEntity.ok(movieService.getMovie(id));
+	}
+
+	@GetMapping("all")
+	public ResponseEntity<List<MovieDto>> getAllMovies(){
+		List<MovieDto> allMovies = movieService.getAllMovies();
+		System.out.println(allMovies);
+		return ResponseEntity.ok(allMovies);
 	}
 }

@@ -10,6 +10,7 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -26,6 +27,7 @@ public class MovieServiceImpl implements MovieService {
 		}
 
 		MovieEntity movieEntity = MovieAdapter.toEntity(movieDto);
+		System.out.println(movieEntity);
 
 		movieEntity = movieRepository.save(movieEntity);
 
@@ -42,6 +44,11 @@ public class MovieServiceImpl implements MovieService {
 		}
 
 		return MovieAdapter.toDto(movieEntity.get());
+	}
+
+	@Override
+	public List<MovieDto> getAllMovies() {
+		return MovieAdapter.toDto(movieRepository.findAll());
 	}
 
 }

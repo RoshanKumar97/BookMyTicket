@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -104,6 +105,15 @@ public class ShowServiceImpl implements ShowService {
 		}
 
 		return pageResponse;
+	}
+
+	@Override
+	public List<ShowDto> showDetailsById(long movieId) {
+		List<ShowEntity> showsByMovieId = showsRepository.findAllByMovieId(movieId);
+		if (showsByMovieId.isEmpty()) {
+			throw new DependencyException("No shows found for Movie ID: " + movieId);
+		}
+		return ShowAdapter.toDto(showsByMovieId);
 	}
 
 }

@@ -49,9 +49,9 @@ public class DataPopulator {
 		theaterSeatsRepository.deleteAllInBatch();
 
 		showsRepository.deleteAllInBatch();
-		movieRepository.deleteAllInBatch();
+		//movieRepository.deleteAllInBatch();
 		theaterRepository.deleteAllInBatch();
-		movieRepository.deleteAllInBatch();
+		//movieRepository.deleteAllInBatch();
 
 		UserEntity userEntity = UserEntity.builder().name("Test").mobile("1234567890").build();
 
@@ -61,17 +61,17 @@ public class DataPopulator {
 		TheaterEntity pvrGurugram = getTheater("PVR", "Gurugram", "MG Road");
 		TheaterEntity carnivalDelhi = getTheater("Carnival", "Delhi", "Subhash Garden");
 
-		MovieEntity spidermanMovie = getMovie("Spiderman");
-		MovieEntity batmanMovie = getMovie("Batman");
+		MovieEntity miMovie = getMovie("MissionImpossibleFallout");
+		MovieEntity alphaMovie = getMovie("Alpha");
 
 		List<ShowEntity> showEntities = new ArrayList<>();
 
-		showEntities.add(getShow(LocalDate.now(), LocalTime.NOON, 1.0f, pvrDelhi, spidermanMovie));
-		showEntities.add(getShow(LocalDate.now(), LocalTime.NOON, 1.1f, pvrGurugram, spidermanMovie));
-		showEntities.add(getShow(LocalDate.now().plusDays(1), LocalTime.NOON, 1.0f, pvrDelhi, spidermanMovie));
-		showEntities.add(getShow(LocalDate.now().plusDays(1), LocalTime.NOON, 1.4f, pvrGurugram, spidermanMovie));
-		showEntities.add(getShow(LocalDate.now(), LocalTime.NOON, 1.2f, carnivalDelhi, spidermanMovie));
-		showEntities.add(getShow(LocalDate.now(), LocalTime.NOON.plusHours(1), 1.5f, carnivalDelhi, batmanMovie));
+		showEntities.add(getShow(LocalDate.now(), LocalTime.NOON, 1.0f, pvrDelhi, miMovie));
+		showEntities.add(getShow(LocalDate.now(), LocalTime.NOON, 1.1f, pvrGurugram, miMovie));
+		showEntities.add(getShow(LocalDate.now().plusDays(1), LocalTime.NOON, 1.0f, pvrDelhi, miMovie));
+		showEntities.add(getShow(LocalDate.now().plusDays(1), LocalTime.NOON, 1.4f, pvrGurugram, miMovie));
+		showEntities.add(getShow(LocalDate.now(), LocalTime.NOON, 1.2f, carnivalDelhi, miMovie));
+		showEntities.add(getShow(LocalDate.now(), LocalTime.NOON.plusHours(1), 1.5f, carnivalDelhi, alphaMovie));
 
 		showsRepository.saveAll(showEntities);
 
@@ -166,13 +166,7 @@ public class DataPopulator {
 	}
 
 	private MovieEntity getMovie(String name) {
-		MovieEntity movieEntity =
-				MovieEntity.builder()
-						.name(name)
-						.build();
 
-		movieEntity = movieRepository.save(movieEntity);
-
-		return movieEntity;
+		return movieRepository.findByName(name);
 	}
 }
