@@ -23,7 +23,7 @@ For the simplicity of system, I have made following assumptions while implementi
 
 1. Create a database `bookmyticket`.
 
-2. Open `src/main/resources/application.properties` and change `spring.datasource.username` and `spring.datasource.password` properties as per your MySQL installation.
+2. Open `src/main/resources/application.properties` and set `spring.datasource.username` and `spring.datasource.password` properties as per your MySQL installation.
 
 3. Type `mvn spring-boot:run` from the root directory of the project to run the application.
 
